@@ -1,20 +1,26 @@
 export default function(state, action) {
     switch(action.type) {
         case 'ADD_FAV_SONG': {
-            const newState = state.favSongs;
-            const filterd = state.favSongs.filter(item => item.name === action.data.name && item.artist.name === action.data.artist.name)
-            if (filterd.length === 0) {
-                newState.push({
-                    ...action.data,
-                    liked: true,
-                });
-                return {track: state.track, favSongs: newState};
-            } else {
-                return {track: state.track, favSongs: state.favSongs.filter(item => item.name !== action.data.name)};
-            }
+            const newState = state.track.map((song) => {
+                if (song.name === action.data.name && song.artist.name === action.data.artist.name ) {
+                    if (action.data.liked) {
+                        return {...song, liked: false};
+                    } else {
+                        return {...song, liked: true};
+                    }
+                } else {
+                    return song;
+                }
+            })
+
+            return { track: newState, favSongs: newState.filter(song => song.liked === true), };
         }
         case 'SET_SONGS_DATA': {
-            return { track: action.songs.track, favSongs: [], };
+            const newState = [];
+            action.songs.track.map((track) => {
+                newState.push({...track, liked: false })
+            });
+            return { track: newState, favSongs: [], };
         }
         default:
             return state;

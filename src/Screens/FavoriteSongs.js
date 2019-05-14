@@ -30,10 +30,6 @@ const StyledFlatList = styled(FlatList)`
 function FavoriteSong() {
   const {store, dispatch} = useContext(ChartContext);
 
-  useEffect(() => {
-    console.log('items++ ',store);
-  });
-
   function addRemoveFav(data) {
     dispatch({
       type: 'ADD_FAV_SONG',
@@ -48,6 +44,7 @@ function FavoriteSong() {
       { store.favSongs.length > 0 ? (
           <StyledFlatList
             data={store.favSongs}
+            keyExtractor={item => item.name}
             renderItem={({item, index}) => 
               <ListItemFav 
                 dataSource={item}

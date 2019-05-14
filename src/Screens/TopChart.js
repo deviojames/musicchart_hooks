@@ -40,7 +40,6 @@ function App() {
             type: 'SET_SONGS_DATA',
             songs: responseJson.tracks,
           });
-          console.log(responseJson.topartists.artist);
           ignore = true;
         }
     }
@@ -49,7 +48,7 @@ function App() {
     return () => { ignore = true; }
   }, [query]);
 
-  function addRemoveFav(data) {
+  function handleFavSong(data) {
     dispatch({
       type: 'ADD_FAV_SONG',
       data,
@@ -65,11 +64,12 @@ function App() {
         : (
           <StyledFlatList
             data={store.track}
+            keyExtractor={item => item.name}
             renderItem={({item, index}) => 
               <ListItem 
                 dataSource={item}
                 index={index+1}
-                addFav={data => addRemoveFav(data)}
+                addFav={data => handleFavSong(data)}
               />
             }
           />

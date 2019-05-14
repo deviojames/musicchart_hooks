@@ -90,7 +90,7 @@ function ListItem({ dataSource, index, addFav }) {
       <IconArea>
         <FavIcon
           color="#ff2d55"
-          name={checkLiked() ? "ios-heart" : "ios-heart-empty"}
+          name={dataSource.liked ? "ios-heart" : "ios-heart-empty"}
           onPress={() => handleAdd(dataSource)}
         />
       </IconArea>
