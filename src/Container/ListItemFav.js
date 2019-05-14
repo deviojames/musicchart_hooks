@@ -51,7 +51,7 @@ const FavIcon = styled(Icon).attrs({
   align-self: center;
 `;
 
-function ListItemFav({ dataSource, index, addFav }) {
+function ListItemFav({ dataSource, addFav }) {
   const [liked, setLike] = useState(true);
 
   function handleAdd(song) {
