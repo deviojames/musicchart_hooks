@@ -1,8 +1,10 @@
 import React, { useState, useContext }  from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ChartContext from '../chart.context';
 import picture from '../images/play-button.png';
+import Card from '../Components/Cards'
 
 const Title = styled.Text`
   font-size: 16;
@@ -20,15 +22,6 @@ const Image = styled.Image`
   height: 50px;
   tint-color: #ff2d55;
 `
-
-const Card = styled.View`
-  background-color: white;
-  margin: 5px 15px 15px 10px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
-  flex-direction: row;
-  height: 50;
-`;
 
 const Content = styled.View`
   flex: 3;
@@ -96,6 +89,15 @@ function ListItem({ dataSource, index, addFav }) {
       </IconArea>
     </Card>
   )
+}
+
+ListItem.PropTypes = {
+  dataSource: PropTypes.shape({
+    name: PropTypes.string.isRequired, 
+    artist: PropTypes.object.isRequired,
+  }),
+  addFav: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 }
 
 export default ListItem;
