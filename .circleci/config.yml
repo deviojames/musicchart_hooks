@@ -8,7 +8,7 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: node-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-v1-{{ checksum "packag-lock.json" }}-{{ arch }}
 
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
