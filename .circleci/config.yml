@@ -1,7 +1,36 @@
-version: 2.1
-  jobs:
-    build:
+version: 2
+jobs:
+  node:
+    working_directory: ~/musicchart_hooks
+    docker:
+      - image: circleci/node:8
     steps:
       - checkout
+
+      - restore_cache:
+          key: node-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
       - run: npm install
-      - run: npm test
+
+      - save_cache:
+          key: node-v1-{{ checksum "packag-lock.json" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - run:
+          name: npm tests
+          command: npm test
+
+workflows:
+  version: 2
+  node-android-ios:
+    jobs:
+      - node
