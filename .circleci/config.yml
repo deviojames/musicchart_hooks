@@ -1,9 +1,8 @@
-version: 2
-jobs:
-  steps:
-    - run:
-        name: Setup Dependencies
-        command: npm install
-    - run: # run tests
-        name: Run Test
-        command: npm test
+version: 2.1
+orbs:
+    hello: circleci/hello-build@0.0.5
+workflows:
+    "Hello Workflow":
+        jobs:
+          - npm install
+          - npm test
