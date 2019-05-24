@@ -1,8 +1,5 @@
 version: 2.1
-orbs:
-    hello: circleci/hello-build@0.0.5
-workflows:
-    "Hello Workflow":
-        jobs:
-          - npm install
-          - npm test
+  jobs:
+    steps:
+    - run: npm install
+    - run: npm test
