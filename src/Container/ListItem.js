@@ -1,6 +1,6 @@
 import React, { useState, useContext }  from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ChartContext from '../chart.context';
 import picture from '../images/play-button.png';

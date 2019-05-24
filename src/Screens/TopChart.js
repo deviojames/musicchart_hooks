@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FlatList } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import ListItem from '../Container/ListItem';
 import ChartContext from '../chart.context';
 
@@ -23,7 +23,7 @@ const StyledFlatList = styled(FlatList)`
 `;
 
 function App() {
-  const API_KEY = '';
+  const API_KEY = '428843157b7408d7d619f007a24c0dbc';
   const APILink =  `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&country=spain&api_key=${API_KEY}&format=json`;
   const {store, dispatch} = useContext(ChartContext);
   const [query] = useState('react');

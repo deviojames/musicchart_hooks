@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { FlatList } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import ListItemFav from '../Container/ListItemFav';
 import ChartContext from '../chart.context';
 
