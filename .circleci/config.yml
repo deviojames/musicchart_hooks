@@ -1,5 +1,7 @@
 version: 2.1
   jobs:
+    build:
     steps:
-    - run: npm install
-    - run: npm test
+      - checkout
+      - run: npm install
+      - run: npm test
