@@ -85,6 +85,7 @@ function ListItem({ dataSource, index, addFav }) {
           color="#ff2d55"
           name={dataSource.liked ? "ios-heart" : "ios-heart-empty"}
           onPress={() => handleAdd(dataSource)}
+          testID={`favBtn_${index}`}
         />
       </IconArea>
     </Card>
