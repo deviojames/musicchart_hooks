@@ -55,7 +55,7 @@ function App() {
   }
 
   return (
-    <Container>
+    <Container testID="TOP_CHART_SCREEN">
       <Title>Top 50 Songs</Title>
       <Credit>via last.fm</Credit>
       { ignore ? 
