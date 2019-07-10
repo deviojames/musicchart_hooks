@@ -32,7 +32,7 @@ const RankArea = styled.View`
   align-items: center;
 `
 
-const IconArea = styled.View`
+const IconArea = styled.TouchableOpacity`
   flex: 1;
   justify-content: center;
 `
@@ -65,11 +65,10 @@ function ListItemFav({ dataSource, addFav }) {
         <Title numberOfLines={1}>{dataSource.name}</Title>
         <ArtisLable>{dataSource.artist.name}</ArtisLable>
       </Content>
-      <IconArea>
+      <IconArea onPress={() => handleAdd(dataSource)}>
         <FavIcon
           color="#ff2d55"
           name={liked ? "ios-heart" : "ios-heart-empty"}
-          onPress={() => handleAdd(dataSource)}
         />
       </IconArea>
     </Card>
